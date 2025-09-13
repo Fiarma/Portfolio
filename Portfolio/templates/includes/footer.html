@@ -1,0 +1,51 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+
+<footer>
+    <div class="footer-container">
+        <!-- Section des réseaux sociaux -->
+        <div class="social-links">
+            <h3>Suivez-moi</h3>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/fiarma/" target="_blank">
+                        <img src="{% static 'images/linkedin.jpeg' %}" alt="LinkedIn"> LinkedIn
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/Fiarma5233/" target="_blank">
+                        <img src="{% static 'images/github.jpeg' %}" alt="GitHub"> GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section Contacts -->
+        <div class="contact-links">
+            <h3>Contacts</h3>
+            <ul>
+                <li>
+                    <a href="tel:+226 52 33 61 53">
+                        <img src="{% static 'images/tel.png' %}" alt="Téléphone"> +226 52 33 61 52
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/226 67 48 91 87" target="_blank">
+                        <img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp"> WhatsApp
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="https://www.linkedin.com/in/fiarma/" target="_blank">
+                        <img src="{% static 'images/linkedin.jpeg' %}" alt="LinkedIn"> LinkedIn
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-copyright">
+        <p>&copy; {{ current_year }} Mon Portfolio. Tous droits réservés.</p>
+    </div>
+</footer>

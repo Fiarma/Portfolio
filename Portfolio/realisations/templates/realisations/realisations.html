@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- Section des réalisations -->
+        <div class="portfolio-links">
+            <h3>Mes Réalisations</h3>
+            <div class="portfolio-grid">
+                <ul>
+                    {% for realisation in realisations %}
+                    <li>
+                        <a href="{{ realisation.link }}" target="_blank">{{ realisation.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

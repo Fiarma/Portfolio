@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mes Projets{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'projects/css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="navigation-buttons">
+        <a href="{% url 'education' %}" class="nav-button">
+            <span class="button-arrow">←</span> Cursus
+        </a>
+        <a href="{% url 'skill' %}" class="nav-button">
+            Expérience <span class="button-arrow">→</span>
+        </a>
+    </div>
+
+    <main class="main-container">
+        <h2>Mes Projets</h2>
+
+        <div class="projects-grid">
+            {% for project in page_obj %}
+            <div class="projet-card">
+                <h3>{{ project.titre }}</h3>
+                <p class="date">Date de réalisation : {{ project.date_creation|date:"d F Y" }}</p>
+                
+                <div class="project-summary">
+                    {% if project.description_probleme %}
+                        <p>{{ project.description_probleme|safe|truncatechars:200 }}</p>
+                    {% endif %}
+                </div>
+
+                <a href="{% url 'project-detail' project.id %}" class="read-more-link">Lire la suite &raquo;</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination-link">&laquo; Première</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Précédente</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Suivante</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Dernière &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

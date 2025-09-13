@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'education/css/education.css' %}">
+
+<div class="education-container">
+
+    <div class="navigation-buttons">
+        <a href="{% url 'about' %}" class="nav-button about-button"><span class="button-arrow">←</span> À propos</a>
+        <a href="{% url 'project' %}" class="nav-button projects-button">Projets <span class="button-arrow">→</span></a>
+    </div>
+
+    <h2>Mon Cursus Scolaire</h2>
+
+    <div class="education-grid">
+        {% for education in educations|dictsortreversed:"end_year" %}
+        <div class="education-card">
+            <div class="education-header">
+                <div class="education-number">{{ forloop.revcounter }}</div>
+                <h3 class="education-degree">{{ education.degree }}</h3>
+            </div>
+            <p class="education-institution">{{ education.institution }}</p>
+            <p class="education-dates">
+                <span class="start-year">{{ education.start_year }}</span>
+                <span class="separator">-</span>
+                <span class="end-year">{{ education.end_year }}</span>
+            </p>
+            {% if education.description %}
+            <p class="education-description">{{ education.description | safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

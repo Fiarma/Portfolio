@@ -1,0 +1,354 @@
+/* Styles pour le corps de la page */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour les boutons de navigation */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: rgb(50, 80, 179);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid rgb(50, 80, 179);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgb(50, 80, 179);
+    color: white;
+}
+
+/* Style pour les flèches */
+.button-arrow {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Conteneur principal */
+.education-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: transparent;
+}
+
+/* Titre principal */
+.education-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    margin-top: 100px;
+}
+
+/* Grille des expériences */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Carte expérience */
+.education-card {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid rgb(50, 80, 179);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.education-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Alignement numéro + titre */
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.education-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(50, 80, 179);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.education-degree {
+    color: rgb(50, 80, 179);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Ligne info */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 5px 0;
+}
+
+.info-label {
+    font-weight: 700;
+    color: #bbb;
+    font-size: 1rem;
+}
+
+.info-value {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.date-value {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Description */
+.education-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 15px 0;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    flex-grow: 1;
+}
+
+/* Bouton certification */
+.certification-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: rgb(50, 80, 179);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid rgb(50, 80, 179);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
+.certification-link:hover {
+    background-color: rgb(50, 80, 179);
+    color: white;
+}
+
+/* Pagination principale */
+.pagination {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.pagination .step-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pagination-link,
+.pagination .current {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+}
+
+.pagination-link {
+    background-color: transparent;
+    border: 1px solid rgb(50, 80, 179);
+    color: rgb(50, 80, 179);
+}
+
+.pagination-link:hover {
+    background-color: rgb(50, 80, 179);
+    color: white;
+}
+
+.pagination .current {
+    background-color: rgb(50, 80, 179);
+    color: white;
+    border: 1px solid rgb(50, 80, 179);
+}
+
+/* Overlay PDF */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.certificate-container {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+/* 
+.close-btn {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    z-index: 1001;
+} */
+
+/* Croix de fermeture overlay PDF */
+.close-btn {
+    position: absolute;
+    top: 0.5rem;        /* reste toujours en haut du conteneur */
+    right: 0.5rem;      /* reste toujours à droite du conteneur */
+    font-size: 2rem;    /* taille par défaut */
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    z-index: 1001;
+    line-height: 1;
+}
+
+/* Toolbar PDF */
+.certificate-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+
+    /* Responsive fix */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.certificate-toolbar button {
+    padding: 5px 10px;
+    border: 1px solid rgb(50, 80, 179);
+    background: white;
+    color: rgb(50, 80, 179);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.certificate-toolbar button:hover {
+    background: rgb(50, 80, 179);
+    color: white;
+}
+
+/* Contenu PDF */
+.certificate-content {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.certificate-content canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-container {
+        padding: 15px;
+    }
+
+    .education-card {
+        padding: 1.5rem;
+    }
+
+    .certificate-toolbar {
+        gap: 8px;
+    }
+
+    /* .close-btn {
+        font-size: 1.5rem;
+        top: 5px;
+        right: 10px;
+    } */
+
+    .close-btn {
+        font-size: 1.5rem;  /* Réduit la taille sur tablettes et mobiles */
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .close-btn {
+        font-size: 1.2rem;  /* Encore plus petit sur très petits écrans */
+        
+    }
+}

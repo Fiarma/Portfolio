@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'skill/css/skill.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="navigation-buttons">
+        <a href="{% url 'project' %}" class="nav-button">
+            <span class="button-arrow">←</span> Projets
+        </a>
+        <a href="{% url 'contact' %}" class="nav-button">
+            Contact <span class="button-arrow">→</span>
+        </a>
+    </div>
+
+    <div class="education-container">
+        <h2>Mes Expériences et Certifications</h2>
+
+        <div class="education-grid">
+            {% for experience in page_obj %}
+            <div class="education-card">
+                <div class="education-header">
+                    <div class="education-number">{{ page_obj.start_index|add:forloop.counter0 }}</div>
+                    <h3 class="education-degree">{{ experience.title }}</h3>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Organisation</span>
+                    <span class="info-value">{{ experience.organization }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date</span>
+                    <span class="info-value date-value">{{ experience.date }}</span>
+                </div>
+                <p class="education-description">{{ experience.description | safe}}</p>
+                {% if experience.certification_file %}
+                <button class="certification-link"
+                        onclick="openCertificate('{{ experience.certification_file.url }}')">
+                    Voir la certification
+                </button>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination-link">&laquo; Première</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Précédente</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Suivante</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Dernière &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <!-- Overlay PDF -->
+    <div class="overlay" id="pdfOverlay">
+        <div class="certificate-container">
+            <span class="close-btn" onclick="closeOverlay()">×</span>
+            <div class="certificate-toolbar">
+                <button onclick="prevPage()">⬅ Page précédente</button>
+                <span id="pageInfo">Page 1</span>
+                <button onclick="nextPage()">Page suivante ➡</button>
+            </div>
+            <div class="certificate-content">
+                <canvas id="pdfViewer"></canvas>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- PDF.js depuis CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    let pdfDoc = null,
+        pageNum = 1,
+        scale = 1.2,
+        canvas = document.getElementById("pdfViewer"),
+        ctx = canvas.getContext("2d");
+
+    function renderPage(num) {
+        pdfDoc.getPage(num).then(function(page) {
+            let viewport = page.getViewport({ scale: scale });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            let renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            page.render(renderContext);
+
+            document.getElementById("pageInfo").textContent =
+                `Page ${pageNum} / ${pdfDoc.numPages}`;
+        });
+    }
+
+    function openCertificate(url) {
+        document.getElementById("pdfOverlay").style.display = "flex";
+
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+            pdfDoc = pdf;
+            pageNum = 1;
+            renderPage(pageNum);
+        });
+    }
+
+    function closeOverlay() {
+        document.getElementById("pdfOverlay").style.display = "none";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function prevPage() {
+        if (pageNum <= 1) return;
+        pageNum--;
+        renderPage(pageNum);
+    }
+
+    function nextPage() {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        renderPage(pageNum);
+    }
+</script>
+{% endblock %}

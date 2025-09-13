@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ project.titre }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'projects/css/project_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="main-container">
+        <div class="projet-card full-content">
+            <!-- Titre du projet et date de finition -->
+            <header class="project-header">
+                <h1>{{ project.titre }}</h1>
+                <p class="date">Date de finition : {{ project.date_creation|date:"d F Y" }}</p>
+            </header>
+
+            <!-- Description du problème -->
+            {% if project.description_probleme %}
+            <section class="details">
+                <h3>Description du problème</h3>
+                <div class="content-block">
+                    {{ project.description_probleme|safe }}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Justification du projet -->
+            {% if project.justification %}
+            <section class="details">
+                <h3>Justification du projet</h3>
+                <div class="content-block">
+                    {{ project.justification|safe }}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Objectif du projet -->
+            {% if project.objective %}
+            <section class="details">
+                <h3>Objectif du projet</h3>
+                <div class="content-block">
+                    {{ project.objective|safe }}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Données utilisées -->
+            {% if project.donnees_utilisees %}
+            <section class="details">
+                <h3>Données utilisées</h3>
+                <div class="content-block">
+                    {{ project.donnees_utilisees|safe }}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Outils -->
+            {% if project.tools %}
+            <section class="details">
+                <h3>Outils</h3>
+                <div class="content-block">
+                    {{ project.tools|safe }}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Étapes de résolution -->
+            {% if project.etapes.all %}
+            <section class="details">
+                <h3>Étapes de résolution</h3>
+                <ul class="steps-list">
+                    {% for etape in project.etapes.all %}
+                        <li>
+                            <strong class="step-title">{{ etape.nom }} :</strong>
+                            <div class="step-description">{{ etape.description|safe }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+
+            <!-- Résultats obtenus -->
+            {% if project.resultats_modeles.all %}
+            <section class="details">
+                <h3>Résultats obtenus</h3>
+                <div class="results-container">
+                    {% for resultat_modele in project.resultats_modeles.all %}
+                        <div class="model-result">
+                            <h4>{{ resultat_modele.nom_modele }}</h4>
+                            <ul class="metrics-list">
+                                {% for metrique in resultat_modele.metriques.all %}
+                                    <li><strong>{{ metrique.nom }} :</strong> {{ metrique.valeur }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Leçons apprises -->
+            {% if project.lecons.all %}
+            <section class="details">
+                <h3>Leçons apprises</h3>
+                <ul class="lessons-list">
+                    {% for lecon in project.lecons.all %}
+                        <li>
+                            <strong class="lesson-title">{{ lecon.titre }} :</strong>
+                            <div class="lesson-description">{{ lecon.description|safe }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+
+            <!-- Améliorations possibles -->
+            {% if project.ameliorations.all %}
+            <section class="details">
+                <h3>Améliorations possibles</h3>
+                <ul class="improvements-list">
+                    {% for amelioration in project.ameliorations.all %}
+                        <li>
+                            <strong class="improvement-title">{{ amelioration.titre }} :</strong>
+                            <div class="improvement-description">{{ amelioration.description|safe }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+
+            <!-- Actions (Lien du projet et retour) -->
+            <div class="project-actions">
+                <a href="{% url 'project' %}" class="action-button">
+                    <span class="button-arrow">←</span>
+                    Retour à la liste
+                </a>
+                
+                {% if project.lien_code %}
+                <a href="{{ project.lien_code }}" target="_blank" class="action-button">
+                    Voir le projet
+                    <span class="button-arrow">↗</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}À Propos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Bouton Cursus -->
+<div class="about-button-container">
+    <a href="{% url 'education' %}" class="nav-button">
+        Cursus <span class="button-arrow">→</span>
+    </a>
+</div>
+
+<div class="about-container">
+
+    <!-- <h2>À Propos</h2> -->
+
+    <div class="about-grid">
+        
+
+        {% if about %}
+
+            {% if about.photo %}
+            <div class="about-image">
+                <img src="{{ about.photo.url }}" alt="Profil">
+            </div>
+            {% endif %}
+
+            <div class="about-content">
+
+                {% if about.presentation %}
+                <div class="about-presentation">
+                    <h3>Présentation</h3>
+                    {{ about.presentation|safe }}
+                </div>
+                {% endif %}
+
+                {% if about.professional_evolution %}
+                <div class="about-professional-evolution">
+                    <h3>Évolution Professionnelle</h3>
+                    {{ about.professional_evolution|safe }}
+                </div>
+                {% endif %}
+
+                {% if about.vision %}
+                <div class="about-vision">
+                    <h3>Vision</h3>
+                    {{ about.vision|safe }}
+                </div>
+                {% endif %}
+
+            </div>
+
+        {% else %}
+            <p>Profil non renseigné pour le moment.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

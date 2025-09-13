@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'contact/css/contact.css' %}">
+
+<div class="navigation-buttons">
+           <a href="{% url 'skill' %}" class="nav-button">
+                <span class="button-arrow">←</span> Expérience
+            </a>
+            
+    </div>
+
+<div class="contact-container">
+    <h2>Contactez-moi</h2>
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+        </div>
+        <button type="submit" class="submit-button">Envoyer</button>
+    </form>
+
+    <!-- Pop-up de succès -->
+    {% if success %}
+    <div id="success-popup" class="success-popup">
+        Message envoyé avec succès !
+    </div>
+
+    <script>
+        // Afficher le pop-up
+        document.getElementById('success-popup').style.display = 'block';
+
+        // Rediriger après 5 secondes
+        setTimeout(function() {
+            window.location.href = "{% url 'about' %}";
+        }, 5000);  // 5000 ms = 5 secondes
+    </script>
+    {% endif %}
+</div>
+{% endblock %}

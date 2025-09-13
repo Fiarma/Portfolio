@@ -1,0 +1,139 @@
+/* Conteneur principal du footer */
+footer {
+    background-color: rgb(50, 80, 179); /* bleu */
+    color: #fff;
+    padding: 2.5rem 1.5rem;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Conteneur des sections */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Titres des sections */
+.footer-container h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: #fff;
+}
+
+.footer-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #4CAF50;
+    border-radius: 2px;
+}
+
+/* Section des réseaux sociaux */
+.social-links,
+.contact-links {
+    flex: 1 1 250px;
+}
+
+/* Icônes et liens */
+.social-links ul,
+.contact-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.social-links ul li a,
+.contact-links ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.social-links ul li a img,
+.contact-links ul li a img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.social-links ul li a:hover img,
+.contact-links ul li a:hover img {
+    transform: scale(1.1);
+    border-color: #4CAF50;
+}
+
+.social-links ul li a:hover,
+.contact-links ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Section copyright */
+.footer-copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .social-links,
+    .contact-links {
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-container h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links ul,
+    .contact-links ul {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        gap: 2rem;
+    }
+
+    .social-links ul li a,
+    .contact-links ul li a {
+        font-size: 0.95rem;
+    }
+
+    .social-links ul li a img,
+    .contact-links ul li a img {
+        width: 30px;
+        height: 30px;
+    }
+}

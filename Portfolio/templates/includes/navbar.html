@@ -1,0 +1,348 @@
+
+
+
+<nav>
+    <div class="navbar-container">
+        <a href="#" class="navbar-logo">SOME Fiarma Landry</a>
+        <ul class="navbar-links">
+            <li><a href="{% url 'about' %}">À Propos</a></li>
+            <!-- <li><a href="{% url 'blog' %}">Blog</a></li> -->
+            <li><a href="{% url 'education' %}">Cursus</a></li>
+            <li><a href="{% url 'project' %}">Projets</a></li>
+
+            <li><a href="{% url 'skill' %}">Expériences</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+    </div>
+</nav>
+
+
+
+<!-- 
+<style>
+    /* Réinitialiser les marges et paddings par défaut */
+* {
+    margin: 10;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Navbar de base */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed; /* Fixer la navbar en haut */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* S'assurer que la navbar est au-dessus des autres éléments */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin-left: 20px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #4CAF50; /* Couleur au survol */
+}
+
+/* Bouton du menu mobile */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
+</style> -->
+
+<style>
+  /* Réinitialisation de base et box-sizing pour un meilleur contrôle */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Navbar de base */
+nav {
+    background-color: rgb(50, 80, 179); /* Couleur de fond bleue */
+    padding: 1rem 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white; /* Écriture blanche pour le logo */
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-links li {
+    margin-left: 1.5rem;
+}
+
+.navbar-links a {
+    color: white; /* Écriture blanche pour les liens */
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0.2rem;
+    position: relative;
+}
+
+/* Effet de surlignage élégant sur les liens */
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4CAF50; /* Couleur du surlignage */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Bouton du menu mobile (hamburger) */
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white; /* Couleur du hamburger */
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background-color: white; /* Couleur des lignes du hamburger */
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* Animation de transformation de l'hamburger en croix */
+.navbar-toggle.active .hamburger {
+    background-color: transparent;
+}
+
+.navbar-toggle.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.navbar-toggle.active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-wrap: wrap;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(50, 80, 179);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar-links.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .navbar-links li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-links li:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        color: white;
+    }
+
+    .navbar-links a::after {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
+</style>
+<!-- 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarLinks = document.querySelector('.navbar-links');
+    
+        navbarToggle.addEventListener('click', function() {
+            navbarLinks.classList.toggle('active');
+        });
+    });
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbarLinks = document.querySelector('.navbar-links');
+
+    navbarToggle.addEventListener('click', function() {
+        navbarLinks.classList.toggle('active');
+        this.classList.toggle('active');
+    });
+});
+</script>

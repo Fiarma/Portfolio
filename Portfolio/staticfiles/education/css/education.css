@@ -1,0 +1,347 @@
+/* Conteneur principal */
+.education-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: transparent;
+}
+
+/* Titre principal */
+.education-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    margin-top: 100px; /* Ajoute un espace pour que le titre ne soit pas caché par les boutons */
+}
+
+/* Grille des diplômes */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Carte diplôme */
+.education-card {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid rgb(50, 80, 179);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Effet de survol sur la carte */
+.education-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Alignement numéro + titre */
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+/* Numéro circulaire */
+.education-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(50, 80, 179);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Titre diplôme */
+.education-degree {
+    color: rgb(50, 80, 179);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Institution */
+.education-institution {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/* Dates */
+.education-dates {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Style pour start_year (rouge) */
+.education-dates .start-year {
+    color: red;
+}
+
+/* Style pour le trait d'union (jaune) */
+.education-dates .separator {
+    color: rgb(202, 202, 17);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Style pour end_year (vert) */
+.education-dates .end-year {
+    color: green;
+}
+
+/* Description */
+.education-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    flex-grow: 1;
+}
+
+/* Styles pour les nouveaux boutons de navigation (mis à jour) */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* S'étend sur toute la largeur */
+    padding: 0 20px; /* Espace sur les côtés */
+    box-sizing: border-box; /* S'assure que le padding n'ajoute pas de largeur */
+    margin-top: 20px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 80px; /* Ajustez cette valeur selon la hauteur de votre navbar */
+    left: 0;
+    right: 0;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: rgb(50, 80, 179);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid rgb(50, 80, 179);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgb(50, 80, 179);
+    color: white;
+}
+
+/* Style pour les flèches */
+.button-arrow {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Media Queries pour le responsive */
+/* @media (max-width: 1024px) {
+    .education-container {
+        max-width: 90%;
+        margin: 40px auto;
+    }
+    
+    .education-grid {
+        gap: 15px;
+    }
+    
+    .education-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .education-container {
+        padding: 15px;
+        margin: 30px auto;
+    }
+    
+    .education-card {
+        padding: 1.5rem;
+    }
+    
+    .education-header {
+        gap: 10px;
+    }
+    
+    .education-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .education-degree {
+        font-size: 1.1rem;
+    }
+    
+    .education-institution {
+        font-size: 1rem;
+    }
+    
+    .education-dates {
+        font-size: 0.85rem;
+    }
+    
+    .education-description {
+        font-size: 0.95rem;
+    }
+    
+    .navigation-buttons {
+        padding: 0 15px;
+        position: relative;
+        top: 0;
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .education-container h2 {
+        margin-top: 30px;
+    }
+}
+
+/* 480px /
+@media (max-width: 480px) {
+    .education-container {
+        margin: 10px auto;
+        padding: 10px;
+    }
+    
+    .education-card {
+        padding: 1rem;
+    }
+    
+    .education-header {
+        gap: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .education-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .education-degree {
+        font-size: 1rem;
+    }
+    
+    .education-institution {
+        font-size: 0.95rem;
+    }
+    
+    .education-dates {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .education-description {
+        font-size: 0.9rem;
+    }
+    
+    .navigation-buttons {
+        padding: 0 10px;
+        position: relative;
+        top: 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-button {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+    }
+    
+    .education-container h2 {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+} */
+
+/* ############### */
+/* Grille des diplômes : toujours 2 colonnes, même sur mobile */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Responsive */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+    .education-container { max-width: 95%; padding: 15px; }
+    .education-card { padding: 2rem; }
+    .education-degree { font-size: 1.1rem; }
+    .education-description { font-size: 0.95rem; }
+}
+
+/* Mobiles moyens */
+@media (max-width: 768px) {
+    .education-container { padding: 10px; }
+
+    /* Passe en une seule colonne */
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card { padding: 1.5rem; }
+    .education-number { width: 35px; height: 35px; font-size: 1rem; }
+    .education-degree { font-size: 1rem; }
+    .education-institution { font-size: 0.95rem; }
+    .education-dates { font-size: 0.85rem; }
+    .education-description { font-size: 0.9rem; }
+    
+    .nav-button { padding: 8px 16px; font-size: 0.9rem; }
+}
+
+/* Petits téléphones */
+@media (max-width: 480px) {
+    .education-container { padding: 5px; }
+
+    /* Toujours 1 colonne */
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card { padding: 1rem; }
+    .education-number { width: 28px; height: 28px; font-size: 0.8rem; }
+    .education-degree { font-size: 0.9rem; }
+    .education-institution { font-size: 0.85rem; }
+    .education-dates { font-size: 0.75rem; }
+    .education-description { font-size: 0.85rem; }
+    
+    .nav-button { padding: 6px 12px; font-size: 0.85rem; }
+}
