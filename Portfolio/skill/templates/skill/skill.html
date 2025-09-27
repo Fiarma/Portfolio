@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="navigation-buttons">
         <a href="{% url 'project' %}" class="nav-button">
             <span class="button-arrow">←</span> Projets
@@ -32,9 +31,11 @@
                 </div>
                 <div class="info-row">
                     <span class="info-label">Date</span>
-                    <span class="info-value date-value">{{ experience.date }}</span>
+                    <span class="info-value date-value">
+                        {{ experience.date|date:"d F Y" }}
+                    </span>
                 </div>
-                <p class="education-description">{{ experience.description | safe}}</p>
+                <p class="education-description">{{ experience.description | safe }}</p>
                 {% if experience.certification_file %}
                 <button class="certification-link"
                         onclick="openCertificate('{{ experience.certification_file.url }}')">
@@ -67,14 +68,16 @@
     <!-- Overlay PDF -->
     <div class="overlay" id="pdfOverlay">
         <div class="certificate-container">
+            <!-- La croix de fermeture reste en haut -->
             <span class="close-btn" onclick="closeOverlay()">×</span>
-            <div class="certificate-toolbar">
+            <div class="certificate-content">
+                <canvas id="pdfViewer"></canvas>
+            </div>
+            <!-- La barre d'outils est maintenant en bas -->
+            <div class="certificate-toolbar" id="pdfToolbar">
                 <button onclick="prevPage()">⬅ Page précédente</button>
                 <span id="pageInfo">Page 1</span>
                 <button onclick="nextPage()">Page suivante ➡</button>
-            </div>
-            <div class="certificate-content">
-                <canvas id="pdfViewer"></canvas>
             </div>
         </div>
     </div>
@@ -92,6 +95,10 @@
         ctx = canvas.getContext("2d");
 
     function renderPage(num) {
+        if (pdfDoc === null) {
+            return;
+        }
+
         pdfDoc.getPage(num).then(function(page) {
             let viewport = page.getViewport({ scale: scale });
             canvas.height = viewport.height;
@@ -114,6 +121,15 @@
         pdfjsLib.getDocument(url).promise.then(function(pdf) {
             pdfDoc = pdf;
             pageNum = 1;
+
+            // Afficher ou cacher la barre d'outils en fonction du nombre de pages
+            const toolbar = document.getElementById("pdfToolbar");
+            if (pdfDoc.numPages > 1) {
+                toolbar.style.display = 'flex';
+            } else {
+                toolbar.style.display = 'none';
+            }
+
             renderPage(pageNum);
         });
     }
@@ -121,6 +137,8 @@
     function closeOverlay() {
         document.getElementById("pdfOverlay").style.display = "none";
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Réinitialiser pdfDoc pour un prochain chargement
+        pdfDoc = null;
     }
 
     function prevPage() {

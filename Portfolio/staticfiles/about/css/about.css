@@ -1,6 +1,7 @@
+/* Conteneur principal */
 .about-container {
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 20px auto 50px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -8,48 +9,56 @@
     position: relative;
 }
 
-/* Bouton Cursus en haut à droite */
+/* Conteneur bouton */
 .about-button-container {
-    position: absolute;
-    top: 80px;
-    right: 20px;
+    position: relative; /* permet l'alignement */
+    z-index: 1100; /* au-dessus de la navbar (1000) */
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 20px;
+    padding-top: 100px; /* décale le bouton sous la navbar */
 }
 
 .nav-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.3em;
-    padding: 0.6em 1.2em;
-    font-size: 1rem;
+    gap: 5px;
+    padding: 12px 24px;
     background-color: transparent;
-    color: rgb(50,80,179);
+    color: rgb(50, 80, 179);
     text-decoration: none;
     font-weight: bold;
-    border: 2px solid rgb(50,80,179);
+    border: 2px solid rgb(50, 80, 179);
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap;
 }
 
 .nav-button:hover {
-    background-color: rgb(50,80,179);
+    background-color: rgb(50, 80, 179);
     color: white;
 }
 
-/* Titres et contenu */
-h2 {
-    color: rgb(50,80,179);
-    margin-top: 60px; /* Décalage pour que le bouton ne chevauche pas */
-    margin-bottom: 20px;
+.button-arrow {
+    font-size: 1.2rem;
+    line-height: 1;
 }
 
+/* Titres */
+h2 {
+    color: rgb(50,80,179);
+    margin-top: 0; 
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* Grille image + contenu */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* Image + contenu */
+    grid-template-columns: 1fr 2fr;
     gap: 20px;
 }
 
-/* Image de profil */
+/* Image */
 .about-image {
     display: flex;
     justify-content: center;
@@ -100,19 +109,13 @@ h2 {
     }
 
     .about-button-container {
-        position: static;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: flex-end;
+        /* justify-content: center; */
+        margin-bottom: 15px;
     }
 
     .nav-button {
         font-size: 0.95rem;
-        padding: 0.5em 1em;
-    }
-
-    h2 {
-        margin-top: 0;
+        padding: 8px 16px;
     }
 
     .about-presentation div,
@@ -124,7 +127,7 @@ h2 {
 
 @media (max-width: 480px) {
     .about-container {
-        margin: 20px;
+        margin: 15px;
         padding: 10px;
     }
 
@@ -132,14 +135,23 @@ h2 {
         max-width: 120px;
     }
 
+    .about-button-container {
+        /* justify-content: center; */
+        margin-bottom: 10px;
+    }
+
     .nav-button {
         font-size: 0.9rem;
-        padding: 0.4em 0.8em;
+        padding: 6px 12px;
     }
 
     .about-presentation div,
     .about-professional-evolution div,
     .about-vision div {
         font-size: 0.9rem;
+    }
+
+    .button-arrow {
+        font-size: 1rem;
     }
 }

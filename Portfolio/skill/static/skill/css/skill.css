@@ -189,8 +189,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 10px; /* Ajout d'un padding pour un meilleur espacement */
 }
 
 .pagination-link,
@@ -203,6 +206,7 @@ body {
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .pagination-link {
@@ -226,8 +230,10 @@ body {
 .overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.7);
     justify-content: center;
     align-items: center;
@@ -245,23 +251,12 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
-/* 
-.close-btn {
-    position: absolute;
-    top: 10px; right: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: red;
-    font-weight: bold;
-    z-index: 1001;
-} */
 
-/* Croix de fermeture overlay PDF */
 .close-btn {
     position: absolute;
-    top: 0.5rem;        /* reste toujours en haut du conteneur */
-    right: 0.5rem;      /* reste toujours à droite du conteneur */
-    font-size: 2rem;    /* taille par défaut */
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 2rem;
     cursor: pointer;
     color: red;
     font-weight: bold;
@@ -269,20 +264,15 @@ body {
     line-height: 1;
 }
 
-/* Toolbar PDF */
 .certificate-toolbar {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 15px;
     padding: 10px;
     background: #f1f1f1;
-    border-bottom: 1px solid #ddd;
-
-    /* Responsive fix */
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
 .certificate-toolbar button {
@@ -301,7 +291,6 @@ body {
     color: white;
 }
 
-/* Contenu PDF */
 .certificate-content {
     flex: 1;
     overflow: auto;
@@ -316,7 +305,7 @@ body {
     height: auto;
 }
 
-/* Media Queries */
+/* Media Queries pour l'overlay PDF */
 @media (max-width: 768px) {
     .education-grid {
         grid-template-columns: 1fr;
@@ -334,21 +323,32 @@ body {
         gap: 8px;
     }
 
-    /* .close-btn {
-        font-size: 1.5rem;
-        top: 5px;
-        right: 10px;
-    } */
-
     .close-btn {
-        font-size: 1.5rem;  /* Réduit la taille sur tablettes et mobiles */
-        
+        font-size: 1.5rem;
+    }
+
+    .overlay {
+        align-items: flex-start;
+        padding-top: 10px;
+    }
+
+    .certificate-container {
+        height: 98%;
+        width: 98%;
     }
 }
 
 @media (max-width: 480px) {
     .close-btn {
-        font-size: 1.2rem;  /* Encore plus petit sur très petits écrans */
-        
+        font-size: 1.2rem;
+    }
+
+    .certificate-toolbar button {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .certificate-toolbar span {
+        font-size: 0.8rem;
     }
 }

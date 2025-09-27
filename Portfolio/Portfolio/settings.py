@@ -38,7 +38,17 @@ SECRET_KEY = 'django-insecure-sr7=wiif*+%kg^$(jk&k4&obtwk$!oj35cgenil&ozcltkw6@^
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG=config('DEBUG')
-ALLOWED_HOSTS = ["*"]
+#DEBUG = config('DEBUG', default=True, cast=bool)
+# from decouple import config, Csv
+
+#DEBUG = config('DEBUG', default=True, cast=bool)
+
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default="127.0.0.1,localhost", cast=Csv())
+
+
+#ALLOWED_HOSTS = ["fiarmalandrysome.pythonanywhere.com"]
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -202,12 +212,18 @@ CKEDITOR_CONFIGS = {
 
 DATABASES = {
     'default': {
+        #'ENGINE': 'django.db.backends.mysql',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT'),
+        # # Ajouter
+        # 'OPTIONS': {
+        # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        # }
+                
     }
 }
 # Pour les emails
@@ -245,7 +261,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr' # Ou 'fr'
 
 TIME_ZONE = 'UTC'
 

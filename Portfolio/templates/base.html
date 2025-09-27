@@ -7,30 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mon Portfolio{% endblock %}</title>
     
-    <!-- CSS de base -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     
-    <!-- Bloc pour le CSS additionnel spécifique à chaque page -->
     {% block extra_css %}{% endblock %}
-    
+    <script src="{% static 'js/navbar.js' %}" defer></script>
+
 </head>
 <body>
-    <!-- Inclure la navbar -->
     {% include 'includes/navbar.html' %}
 
-    <!-- Contenu principal -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- Inclure le footer -->
     {% include 'includes/footer.html' %}
 
-    <!-- JavaScript de base -->
-    <script src="{% static 'js/scripts.js' %}"></script>
     
-    <!-- Bloc pour le JavaScript additionnel spécifique à chaque page -->
     {% block extra_js %}{% endblock %}
 </body>
 </html>

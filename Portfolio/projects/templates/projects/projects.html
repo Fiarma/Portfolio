@@ -23,6 +23,14 @@
         <div class="projects-grid">
             {% for project in page_obj %}
             <div class="projet-card">
+                {% if project.capture %}
+                    <img src="{{ project.capture.url }}" alt="Capture d'écran du projet {{ project.titre }}" class="project-capture">
+                {% else %}
+                    <div class="placeholder-capture">
+                        <p>Pas de capture disponible</p>
+                    </div>
+                {% endif %}
+                
                 <h3>{{ project.titre }}</h3>
                 <p class="date">Date de réalisation : {{ project.date_creation|date:"d F Y" }}</p>
                 
@@ -56,4 +64,8 @@
         </span>
     </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'projects/js/projects.js' %}"></script>
 {% endblock %}

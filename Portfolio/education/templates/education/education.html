@@ -20,12 +20,18 @@
                 <div class="education-number">{{ forloop.revcounter }}</div>
                 <h3 class="education-degree">{{ education.degree }}</h3>
             </div>
-            <p class="education-institution">{{ education.institution }}</p>
-            <p class="education-dates">
-                <span class="start-year">{{ education.start_year }}</span>
-                <span class="separator">-</span>
-                <span class="end-year">{{ education.end_year }}</span>
-            </p>
+            <div class="info-row">
+                <span class="info-label">Établissement</span>
+                <span class="info-value">{{ education.institution }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Période</span>
+                <span class="info-value date-value">
+                    <span class="start-year">{{ education.start_year }}</span>
+                    <span class="separator">-</span>
+                    <span class="end-year">{{ education.end_year }}</span>
+                </span>
+            </div>
             {% if education.description %}
             <p class="education-description">{{ education.description | safe }}</p>
             {% endif %}

@@ -11,13 +11,11 @@
 {% block content %}
     <main class="main-container">
         <div class="projet-card full-content">
-            <!-- Titre du projet et date de finition -->
             <header class="project-header">
                 <h1>{{ project.titre }}</h1>
                 <p class="date">Date de finition : {{ project.date_creation|date:"d F Y" }}</p>
             </header>
 
-            <!-- Description du problème -->
             {% if project.description_probleme %}
             <section class="details">
                 <h3>Description du problème</h3>
@@ -27,7 +25,6 @@
             </section>
             {% endif %}
 
-            <!-- Justification du projet -->
             {% if project.justification %}
             <section class="details">
                 <h3>Justification du projet</h3>
@@ -37,7 +34,6 @@
             </section>
             {% endif %}
 
-            <!-- Objectif du projet -->
             {% if project.objective %}
             <section class="details">
                 <h3>Objectif du projet</h3>
@@ -47,7 +43,6 @@
             </section>
             {% endif %}
 
-            <!-- Données utilisées -->
             {% if project.donnees_utilisees %}
             <section class="details">
                 <h3>Données utilisées</h3>
@@ -57,7 +52,6 @@
             </section>
             {% endif %}
 
-            <!-- Outils -->
             {% if project.tools %}
             <section class="details">
                 <h3>Outils</h3>
@@ -67,7 +61,6 @@
             </section>
             {% endif %}
 
-            <!-- Étapes de résolution -->
             {% if project.etapes.all %}
             <section class="details">
                 <h3>Étapes de résolution</h3>
@@ -82,7 +75,6 @@
             </section>
             {% endif %}
 
-            <!-- Résultats obtenus -->
             {% if project.resultats_modeles.all %}
             <section class="details">
                 <h3>Résultats obtenus</h3>
@@ -90,6 +82,9 @@
                     {% for resultat_modele in project.resultats_modeles.all %}
                         <div class="model-result">
                             <h4>{{ resultat_modele.nom_modele }}</h4>
+                            <div class="content-block">
+                                {{ resultat_modele.resultats|safe }}
+                            </div>
                             <ul class="metrics-list">
                                 {% for metrique in resultat_modele.metriques.all %}
                                     <li><strong>{{ metrique.nom }} :</strong> {{ metrique.valeur }}</li>
@@ -101,7 +96,17 @@
             </section>
             {% endif %}
 
-            <!-- Leçons apprises -->
+            {% if project.conclusions.all %}
+            <section class="details">
+                <h3>Conclusion</h3>
+                {% for conclusion in project.conclusions.all %}
+                    <div class="content-block">
+                        {{ conclusion.description|safe }}
+                    </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+            
             {% if project.lecons.all %}
             <section class="details">
                 <h3>Leçons apprises</h3>
@@ -116,7 +121,6 @@
             </section>
             {% endif %}
 
-            <!-- Améliorations possibles -->
             {% if project.ameliorations.all %}
             <section class="details">
                 <h3>Améliorations possibles</h3>
@@ -131,7 +135,6 @@
             </section>
             {% endif %}
 
-            <!-- Actions (Lien du projet et retour) -->
             <div class="project-actions">
                 <a href="{% url 'project' %}" class="action-button">
                     <span class="button-arrow">←</span>

@@ -82,3 +82,35 @@
     color: #555;
     line-height: 1.6;
 }
+
+################
+
+
+/* Dates */
+.education-dates {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Style pour start_year (rouge) */
+.education-dates .start-year {
+    color: red;
+}
+
+/* Style pour le trait d'union (jaune) */
+.education-dates .separator {
+    color: rgb(202, 202, 17);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Style pour end_year (vert) */
+.education-dates .end-year {
+    color: green;
+}

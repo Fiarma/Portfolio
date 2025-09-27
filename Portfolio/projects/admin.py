@@ -1,5 +1,100 @@
+# # from django.contrib import admin
+# # from .models import Project, EtapeResolution, ResultatModele, Metrique, LeconApprise, AmeliorationPossible
+
+# # # Inlines pour les modèles qui sont directement liés à un projet
+# # class EtapeResolutionInline(admin.TabularInline):
+# #     model = EtapeResolution
+# #     extra = 1
+
+# # class ResultatModeleInline(admin.TabularInline):
+# #     model = ResultatModele
+# #     extra = 1
+
+# # class LeconAppriseInline(admin.TabularInline):
+# #     model = LeconApprise
+# #     extra = 1
+
+# # class AmeliorationPossibleInline(admin.TabularInline):
+# #     model = AmeliorationPossible
+# #     extra = 1
+
+# # # Classe d'administration pour le modèle Metrique
+# # class MetriqueAdmin(admin.ModelAdmin):
+# #     list_display = ('nom', 'valeur', 'resultat')  # Affiche ces colonnes
+# #     list_filter = ('resultat__nom_modele',)  # Permet de filtrer par nom de modèle
+# #     search_fields = ('nom', 'valeur')
+
+# # # Classe d'administration pour le modèle ResultatModele
+# # class ResultatModeleAdmin(admin.ModelAdmin):
+# #     list_display = ('nom_modele', 'project')
+# #     list_filter = ('project',)
+# #     search_fields = ('nom_modele',)
+
+
+# # # Enregistrement des modèles
+# # admin.site.register(Project)  # On enregistre le projet pour pouvoir le gérer seul
+# # admin.site.register(EtapeResolution)
+# # admin.site.register(ResultatModele, ResultatModeleAdmin)
+# # admin.site.register(Metrique, MetriqueAdmin)
+# # admin.site.register(LeconApprise)
+# # admin.site.register(AmeliorationPossible)
+
+
+# from django.contrib import admin
+# from .models import Project, EtapeResolution, ResultatModele, Metrique, LeconApprise, AmeliorationPossible, Conclusion
+
+# # Inlines pour les modèles qui sont directement liés à un projet
+# class EtapeResolutionInline(admin.TabularInline):
+#     model = EtapeResolution
+#     extra = 1
+
+# class ResultatModeleInline(admin.TabularInline):
+#     model = ResultatModele
+#     extra = 1
+
+# class LeconAppriseInline(admin.TabularInline):
+#     model = LeconApprise
+#     extra = 1
+
+# class AmeliorationPossibleInline(admin.TabularInline):
+#     model = AmeliorationPossible
+#     extra = 1
+
+# class ConclusionInline(admin.TabularInline):
+#     model = Conclusion
+#     extra = 1
+
+# # Classe d'administration pour le modèle Metrique
+# class MetriqueAdmin(admin.ModelAdmin):
+#     list_display = ('nom', 'valeur', 'resultat')  # Affiche ces colonnes
+#     list_filter = ('resultat__nom_modele',)  # Permet de filtrer par nom de modèle
+#     search_fields = ('nom', 'valeur')
+
+# # Classe d'administration pour le modèle ResultatModele
+# class ResultatModeleAdmin(admin.ModelAdmin):
+#     list_display = ('nom_modele', 'project')
+#     list_filter = ('project',)
+#     search_fields = ('nom_modele',)
+
+# # Classe d'administration principale pour le modèle Project
+# @admin.register(Project)
+# class ProjectAdmin(admin.ModelAdmin):
+#     list_display = ('titre', 'date_creation')
+#     search_fields = ('titre', 'description_probleme')
+#     inlines = [EtapeResolutionInline, ResultatModeleInline, LeconAppriseInline, AmeliorationPossibleInline, ConclusionInline]
+
+# # Enregistrement des modèles restants
+# admin.site.register(EtapeResolution)
+# admin.site.register(ResultatModele, ResultatModeleAdmin)
+# admin.site.register(Metrique, MetriqueAdmin)
+# admin.site.register(LeconApprise)
+# admin.site.register(AmeliorationPossible)
+# admin.site.register(Conclusion)
+
+
+# projects/admin.py
 from django.contrib import admin
-from .models import Project, EtapeResolution, ResultatModele, Metrique, LeconApprise, AmeliorationPossible
+from .models import Project, EtapeResolution, ResultatModele, Metrique, LeconApprise, AmeliorationPossible, Conclusion
 
 # Inlines pour les modèles qui sont directement liés à un projet
 class EtapeResolutionInline(admin.TabularInline):
@@ -18,10 +113,14 @@ class AmeliorationPossibleInline(admin.TabularInline):
     model = AmeliorationPossible
     extra = 1
 
+class ConclusionInline(admin.TabularInline):
+    model = Conclusion
+    extra = 1
+
 # Classe d'administration pour le modèle Metrique
 class MetriqueAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'valeur', 'resultat')  # Affiche ces colonnes
-    list_filter = ('resultat__nom_modele',)  # Permet de filtrer par nom de modèle
+    list_display = ('nom', 'valeur', 'resultat')
+    list_filter = ('resultat__nom_modele',)
     search_fields = ('nom', 'valeur')
 
 # Classe d'administration pour le modèle ResultatModele
@@ -30,11 +129,17 @@ class ResultatModeleAdmin(admin.ModelAdmin):
     list_filter = ('project',)
     search_fields = ('nom_modele',)
 
+# Classe d'administration principale pour le modèle Project
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('titre', 'date_creation')
+    search_fields = ('titre', 'description_probleme')
+    inlines = [EtapeResolutionInline, ResultatModeleInline, LeconAppriseInline, AmeliorationPossibleInline, ConclusionInline]
 
-# Enregistrement des modèles
-admin.site.register(Project)  # On enregistre le projet pour pouvoir le gérer seul
+# Enregistrement des modèles restants
 admin.site.register(EtapeResolution)
 admin.site.register(ResultatModele, ResultatModeleAdmin)
 admin.site.register(Metrique, MetriqueAdmin)
 admin.site.register(LeconApprise)
 admin.site.register(AmeliorationPossible)
+admin.site.register(Conclusion)

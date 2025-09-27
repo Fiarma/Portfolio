@@ -1,0 +1,24 @@
+
+A. Collecte de données : Rassembler les données historiques des clients à partir de diverses sources
+
+ 
+
+B. Exploration des données : explorez l'ensemble de données pour comprendre la structure, les statistiques et obtenir des informations.
+
+ 
+
+C. Prétraitement des données : mettre à l'échelle les variables, encoder les caractéristiques
+
+ 
+
+D. Évaluation : Évaluer le modèle sur différentes mesures telles que l'exactitude, la précision, etc.
+
+ 
+
+E. Développement de modèles : créer des modèles ML pour prédire le taux de désabonnement à partir de l'ensemble de données.
+
+ 
+
+F. Ingénierie des fonctionnalités : créer de nouvelles fonctionnalités, segmenter l'ensemble de données, supprimer les fonctionnalités non pertinentes.
+
+ 

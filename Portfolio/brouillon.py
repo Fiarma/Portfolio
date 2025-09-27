@@ -1,0 +1,301 @@
+/* Styles pour la base de la page */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Conteneur principal pour le contenu */
+/* .main-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    margin-top: 80px;
+} */
+
+/* Conteneur des actions */
+/* .project-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+    gap: 0.8rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+} */
+
+
+/* Augmenter la largeur principale */
+.main-container {
+    max-width: 98%; /* au lieu de 900px */
+    margin: 40px auto;
+    padding: 0 20px;
+    margin-top: 80px;
+}
+
+/* Réorganiser les actions */
+.project-actions {
+    display: flex;
+    justify-content: space-between; /* boutons aux extrêmes */
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+    gap: 0.8rem;
+    flex-wrap: nowrap;
+}
+
+/* Style de base de la carte de projet */
+.projet-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    margin-bottom: 0;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-left: 5px solid rgb(50, 80, 179);
+}
+
+/* Effet de survol sur la carte */
+.projet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* En-tête du projet */
+.project-header {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Titre du projet */
+.project-header h1 {
+    color: #0056b3;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Style pour la date de création */
+.project-header .date {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Style pour les sections de détails */
+.details {
+    margin-top: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.details:last-of-type {
+    border-bottom: none;
+}
+
+/* Titres des sous-sections */
+.details h3 {
+    color: #007bff;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.details h3::before {
+    content: '▶';
+    font-size: 0.8em;
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+/* Sous-titres de modèles */
+.details h4 {
+    color: #2980b9;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Bloc de contenu */
+.content-block {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Listes personnalisées */
+.steps-list, .lessons-list, .improvements-list {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.steps-list li, .lessons-list li, .improvements-list li {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.steps-list li::before, .lessons-list li::before, .improvements-list li::before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.step-title, .lesson-title, .improvement-title {
+    color: #495057;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.step-description, .lesson-description, .improvement-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Conteneur des résultats */
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.model-result {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.2rem;
+    flex: 1 1 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* J'ai ajouté ce style pour l'affichage du RichTextField dans les résultats */
+.model-result .content-block {
+    font-size: 1rem; /* légèrement plus petit pour une meilleure lisibilité */
+    margin-bottom: 1rem;
+}
+
+.metrics-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.metrics-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.metrics-list li:last-child {
+    border-bottom: none;
+}
+
+.metrics-list strong {
+    color: #495057;
+}
+
+
+/* Boutons d'action */
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    color: rgb(50, 80, 179);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid rgb(50, 80, 179);
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+.action-button:hover {
+    background-color: rgb(50, 80, 179);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.button-arrow {
+    margin: 0 6px;
+    font-size: 1.1em;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .project-header h1 {
+        font-size: 2rem;
+    }
+    .details h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .projet-card {
+        padding: 1.5rem;
+    }
+
+    .project-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .details h3 {
+        font-size: 1.3rem;
+        padding-left: 20px;
+    }
+
+    .results-container {
+        flex-direction: column;
+    }
+
+    .project-actions {
+        justify-content: center;
+    }
+
+     .action-button {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .details h3 {
+        font-size: 1.2rem;
+    }
+
+    .action-button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .button-arrow {
+        font-size: 0.95em;
+    }
+}
